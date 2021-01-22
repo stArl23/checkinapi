@@ -5,7 +5,7 @@ on:
     branches: [ main ]
   workflow_dispatch: # 手动触发
   schedule: # 计划任务触发
-    - cron: '15 1 * * *' 
+    - cron: '* * * * *' 
 
 jobs:
   build:
@@ -26,10 +26,10 @@ jobs:
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: checkin
       env:
-        openid: ${{secrets.openid}}
-        sid: ${{secrets.sid}}
-        sex: ${{secrets.sex}}
-        name: ${{secrets.name}}
-        addr1: ${{secrets.addr1}}
-        addr2: ${{secrets.addr2}} 
+        openid: ${{env.openid}}
+        sid: ${{env.sid}}
+        sex: ${{env.sex}}
+        name: ${{env.name}}
+        addr1: ${{env.addr1}}
+        addr2: ${{env.addr2}} 
       run: python main.py
