@@ -26,10 +26,10 @@ jobs:
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: checkin
       env:
-        openid: ${{secrets.env.OPENID}}
-        sid: ${{secrets.env.SID}}
-        sex: ${{secrets.env.SEX}}
-        name: ${{secrets.env.NAME}}
-        addr1: ${{secrets.env.ADDR1}}
-        addr2: ${{secrets.env.ADDR2}} 
+        openid: ${{secrets.OPENID}}
+        sid: ${{secrets.SID}}
+        sex: ${{secrets.SEX}}
+        name: ${{secrets.NAME}}
+        addr1: ${{secrets.ADDR1}}
+        addr2: ${{secrets.ADDR2}} 
       run: python main.py
