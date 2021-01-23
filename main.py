@@ -41,16 +41,24 @@ key = {
     "ywytdzz": "无",
     "beizhu": "无",
     "mrdkkey": sign(),
-    "timestamp": int(time.time())
+    "timestamp": int(time.time()),
+    "stutype": env.get('stutype',"yjs") # 研究生 yjs 本科生bks
 }
 def checkin():
+    
     if key.get("xh") == " " or key.get("openid") == " ":
         warning("请配置环境变量")
         exit()
     key_base64 = base64.b64encode(json.dumps(key).encode('utf-8'))
     post_data = {'key': key_base64.decode('utf-8')}
-    result = requests.post('https://we.cqu.pt/api/mrdk/post_mrdk_info.php',data=json.dumps(post_data),headers=headers)
-    print(result.content)
+    if key.get("stutype")=="yjs":
+        result = requests.post('https://we.cqu.pt/api/yjs_mrdk/post_yjs_mrdk_info.php',
+                               data=json.dumps(post_data), headers=headers)
+        print(result.content)
+    else:
+        result = requests.post('https://we.cqu.pt/api/mrdk/post_mrdk_info.php',
+                               data=json.dumps(post_data), headers=headers)
+        print(result.content)
 
 if __name__ == "__main__":
     checkin()
