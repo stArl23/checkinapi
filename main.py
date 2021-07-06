@@ -25,9 +25,9 @@ headers = {
 
 key = {
     "name": env.get('name',"肖家愚"),
-    "xh": env.get('sid',"1"),
+    "xh": env.get('sid'," "),
     "xb": env.get('sex',"男"),
-    "openid": env.get('openid', "1"),
+    "openid": env.get('openid', " "),
     "locationBig": env.get('addr1',"重庆市,重庆市,南岸区"),
     "locationSmall": env.get('addr2', "重庆邮电大学"),
     "latitude": 29.52168,
