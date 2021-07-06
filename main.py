@@ -25,9 +25,9 @@ headers = {
 
 key = {
     "name": env.get('name',"肖家愚"),
-    "xh": env.get('sid'," "),
+    "xh": env.get('sid',"1"),
     "xb": env.get('sex',"男"),
-    "openid": env.get('openid', " "),
+    "openid": env.get('openid', "1"),
     "locationBig": env.get('addr1',"重庆市,重庆市,南岸区"),
     "locationSmall": env.get('addr2', "重庆邮电大学"),
     "latitude": 29.52168,
@@ -52,11 +52,11 @@ def checkin():
     key_base64 = base64.b64encode(json.dumps(key).encode('utf-8'))
     post_data = {'key': key_base64.decode('utf-8')}
     if key.get("stutype")=="yjs":
-        result = requests.post('https://we.cqu.pt/api/yjs_mrdk/post_yjs_mrdk_info.php',
+        result = requests.post('https://we.cqupt.edu.cn/api/yjs_mrdk/post_yjs_mrdk_info.php',
                                data=json.dumps(post_data), headers=headers)
         print(result.content)
     else:
-        result = requests.post('https://we.cqu.pt/api/mrdk/post_mrdk_info.php',
+        result = requests.post('https://we.cqupt.edu.cn/api/mrdk/post_mrdk_info.php',
                                data=json.dumps(post_data), headers=headers)
         print(result.content)
 
